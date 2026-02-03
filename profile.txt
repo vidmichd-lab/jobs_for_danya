@@ -1,0 +1,69 @@
+Danya Vidmich — Work Experience
+
+Multidisciplinary Design Lead
+
+Multidisciplinary design lead with 8+ years of experience in major tech companies (Yandex Practicum, Yandex Music, Badoo, Yandex Go). Specializes in brand systems, digital product design and large-scale campaigns (OOH, digital, 360), building AI-assisted production pipelines and creative team processes.
+
+Mentioned by type.today, vc.ru, Skillbox and podcast "Sosedniy stolik".
+
+--- Yandex Practicum — Graphic Design Lead | 03'25 — present | Remote
+Leading CIS online tech bootcamp (100K+ graduates).
+- Led the launch of the new Yandex Practicum Pro branding: visual system, brandbook and AI photo generator; the digital campaign delivered 154.2% of planned reach, 206.4% of planned traffic and a +652% search lift for the brand.
+- Designed in Cursor and implemented an AI generator and resizer for communication assets, cutting external vendor costs by ~200k rub. per month and reducing banner time-to-market from 3 days to 10 minutes.
+- Integrated Krea and Recraft into the design team's daily workflows: created a promptbook and set up node-based workflows for AI imagery, reducing dependency on external vendors and saving ~1.4M rub. in Q4 2025.
+- Plan design sprints, prioritize and distribute tasks, and provide art direction for concepts and production across key product communication streams.
+- Run regular design syncs and brainstorms, building close collaboration between designers and editorial on special projects.
+- Mentor mid-level designers: define competency maps, update growth tracks and run 1:1s.
+- Own landing pages for key funnels and maintain the web design library: introduced a template system for typical landings, speeding up launches and simplifying maintenance.
+- Work in a creative pair on concepts for special projects and their adaptation across formats with focus on Brand Awareness, Brand Trust, BHT, NPS and lovemark-style brand relationships.
+- Designed and launched merch for the referrals team (14 SKUs from candles to backpacks), boosting engagement and loyalty among alumni.
+
+--- Yandex Music — Graphic Design Lead | 10'22 — 01'24 | Remote
+Russia's #1 music streaming service (70M+ MAU).
+- Owned visual strategy and creative campaigns for Yandex Music artist-focused products in a Business2Artist model.
+- Relaunched the Bandlink analytics service identity and communication system (SMM, CRM, events), strengthening positioning for artists.
+- Led visual concept and production for the "Year in Review" project three times (2022, 2023, 2024): concept, all marketing and in-product assets, vendor management and event support.
+- Art-directed the "The World of Korol i Shut" special project, delivering full visual integration in the app and the offline exhibition stand at the dedicated show.
+- Developed visual style and communications for multiple marketing launches, including "My Wave for Exams", "Summer is a Vibe", "Summer Postcards 2023" and Boulevard Depo's album launch.
+- Designed merch for the welcome pack of new Yandex Phantech employees.
+
+--- Apt — Co-founder & Art-Director | 05'21 — 11'21 | Remote
+Dating app for meeting through city events.
+- Co-founded and art-directed Apt — a dating app for meeting through city events.
+- Shaped the product vision, secured initial angel investment, defined MVP and designed the product: prototypes, component library and visual language for iOS and Android.
+- Led a cross-functional team (Flutter developers, copywriter, account manager), responsible for creative strategy and visual consistency.
+- Created brand identity and offline communications (stickers, posters, postcards), built landing pages in Readymag and produced all SMM assets, ensuring partner and media presence.
+- Built first partnerships with Moscow cultural venues (Shchusev Architecture Museum, VDNKh, Strelka, State Historical Museum, Manege) and designed a branded corner at a music festival in the Jewish Museum.
+- Achieved 6K+ MAU in the first six months and 11K+ unique profiles (~75% women); the app was featured in Inc Russia, SRSLY and Skillbox.
+
+--- Badoo — Senior Graphic Designer | 08'20 — 02'21 | London (Remote)
+Global dating app (400M+ users, 60M+ MAU).
+- Worked remotely with the UK-based communications design team, presenting concepts and solutions in English.
+- Owned app communications for the Russian market: adapting global identity and developing local campaign.
+- Designed the website for Badoo Hotline, an educational media project on sexual health, and supervised implementation; the site reached 375K+ unique users in the first two weeks.
+- Developed the visual concept for Badoo's first OOH campaign in Russia, "Be Yourself With Me", which was approved and rolled out nationwide.
+- Created image-driven illustrations for media publications and oversaw vendors producing short animated videos about Badoo's values.
+
+--- Yandex Go — Junior Graphic Designer | 10'19 — 07'20 | Moscow (On-Site)
+Super-app for ride-hailing & deliveries (30M+ MAU).
+- Worked in MagicCamp, Yandex Go's internal creative studio, creating visual communications for drivers — from in-app assets to offline materials.
+- Designed offline surfaces: taxi liveries and navigation totems at pick-up points.
+- Supervised several photoshoots, including a quality standards campaign in Central Asia tariffs and the Yandex Go launch.
+- Designed landing pages and visual style for the 2019 drivers' "Year in Review" campaign, building pages in Yandex's internal constructor.
+- Produced initial SMM materials for the "Help is Nearby" social initiative and created print assets (stickers, posters) for hospitals.
+
+--- Art. Lebedev Studio — Junior Web Designer | 11'18 — 09'19 | Moscow (On-Site)
+Largest Eastern European design & branding agency.
+- Under senior designers' guidance, laid out presentations in InDesign, adapted layouts for different screens in Sketch, created landing pages and prepared UI kits for handoff.
+- Participated in the express-design program, shipping 6 projects for clients.
+- Worked on major projects including loyalty terminals for Perekrestok supermarkets, the SberSpasibo loyalty program, the "Lavrus" educational platform for the Tretyakov Gallery and New Year scoreboard graphics for Sheremetyevo Airport.
+- Released the "Echelon" typeface and "Through the Looking Glass" pattern, available for purchase on the studio website.
+
+Skills: Art Direction, Creative Direction, Branding, Visual Communication, Brand Strategy, Digital Product Design, Web Design, Typography, Motion Design, Prototyping, Campaign Development, Concept Development, Print Design, AI-assisted Design, No-code Platforms, Design Management, Team Mentoring.
+
+Tools: Adobe Photoshop, After Effects, Illustrator, InDesign, Figma, Framer, Readymag, Tilda, Cinema 4D, Miro/FigJam, Sketch, Glyphs, Krea.ai, Recraft.ai, Cursor.
+
+Languages: English (B2), Japanese (B1), Italian (B1), Russian (Native).
+
+Resume PDF: https://danyavidmich.com/cv_vidmich_designer.pdf
+CV page: https://danyavidmich.com/cv/
