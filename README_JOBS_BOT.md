@@ -35,7 +35,7 @@
 
 Состояние (уже отправленные вакансии) хранится в `data/seen_jobs.json` в репозитории — workflow сам коммитит обновления после каждого запуска.
 
-**Деплой в бакет:** при каждом push в ветку `main` workflow **Deploy to bucket** синхронизирует содержимое репозитория в бакет Yandex Object Storage (без `.git`, `.env`, `.venv`, `.github`). Ручной запуск: **Actions** → **Deploy to bucket** → **Run workflow**. Нужны секреты `YANDEX_S3_BUCKET`, `YANDEX_S3_ACCESS_KEY_ID`, `YANDEX_S3_SECRET_ACCESS_KEY`.
+**Деплой в бакет:** при каждом push в ветку `main` workflow **Deploy to bucket** синхронизирует содержимое репозитория в бакет Yandex Object Storage (без `.git`, `.env`, `.venv`, `.github`). Ручной запуск: **Actions** → **Deploy to bucket** → **Run workflow**. Нужны секреты `YANDEX_S3_BUCKET`, `YANDEX_S3_ACCESS_KEY_ID`, `YANDEX_S3_SECRET_ACCESS_KEY`. Сервисный аккаунт должен иметь роль «Редактор хранилища» (Storage Editor) на бакет. Если появляется **SignatureDoesNotMatch** — создай новый статический ключ в консоли Yandex Cloud и вставь его в секреты **без пробелов и переносов строк** в начале и конце.
 
 ## Настройка (локальный запуск бота)
 

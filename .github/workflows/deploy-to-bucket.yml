@@ -15,30 +15,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure AWS CLI for Yandex Object Storage
+      - name: Configure credentials for Yandex Object Storage
         env:
           YANDEX_S3_ACCESS_KEY_ID: ${{ secrets.YANDEX_S3_ACCESS_KEY_ID }}
           YANDEX_S3_SECRET_ACCESS_KEY: ${{ secrets.YANDEX_S3_SECRET_ACCESS_KEY }}
-        run: |
-          # Убираем переводы строк и пробелы по краям (иначе Invalid header / SignatureDoesNotMatch)
-          AK="$(printf '%s' "$YANDEX_S3_ACCESS_KEY_ID" | tr -d '\n\r' | xargs)"
-          SK="$(printf '%s' "$YANDEX_S3_SECRET_ACCESS_KEY" | tr -d '\n\r' | xargs)"
-          mkdir -p ~/.aws
-          echo '[default]' > ~/.aws/config
-          echo 'region = ru-central1' >> ~/.aws/config
-          echo 's3 =' >> ~/.aws/config
-          echo '  addressing_style = path' >> ~/.aws/config
-          echo '[default]' > ~/.aws/credentials
-          echo "aws_access_key_id = $AK" >> ~/.aws/credentials
-          echo "aws_secret_access_key = $SK" >> ~/.aws/credentials
-
-      - name: Sync to bucket
-        env:
           YANDEX_S3_BUCKET: ${{ secrets.YANDEX_S3_BUCKET }}
         run: |
-          BUCKET="$(printf '%s' "$YANDEX_S3_BUCKET" | tr -d '\n\r')"
-          aws s3 sync . "s3://${BUCKET}/" \
+          # Обрезаем переводы строк и пробелы — иначе Invalid header / SignatureDoesNotMatch
+          AK="$(printf '%s' "$YANDEX_S3_ACCESS_KEY_ID" | tr -d '\n\r' | xargs)"
+          SK="$(printf '%s' "$YANDEX_S3_SECRET_ACCESS_KEY" | tr -d '\n\r' | xargs)"
+          BUCKET="$(printf '%s' "$YANDEX_S3_BUCKET" | tr -d '\n\r' | xargs)"
+          echo "AWS_ACCESS_KEY_ID=$AK" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=$SK" >> $GITHUB_ENV
+          echo "S3_BUCKET=$BUCKET" >> $GITHUB_ENV
+          mkdir -p ~/.aws
+          printf '%s\n' '[default]' 'region = ru-central1' 's3 =' '  addressing_style = path' > ~/.aws/config
+          printf '%s\n' '[default]' "aws_access_key_id = $AK" "aws_secret_access_key = $SK" > ~/.aws/credentials
+
+      - name: Sync to bucket
+        run: |
+          aws s3 sync . "s3://$S3_BUCKET/" \
             --endpoint-url "https://storage.yandexcloud.net" \
+            --region ru-central1 \
             --delete \
             --exclude ".git/*" \
             --exclude ".env" \
