@@ -1,5 +1,5 @@
 # Деплой содержимого репозитория в бакет Yandex Object Storage
-# Запускается при push в main и вручную
+# Запускается при push в main и вручную. Синхронизация через Python (boto3).
 
 name: Deploy to bucket
 
@@ -15,35 +15,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure credentials for Yandex Object Storage
-        env:
-          YANDEX_S3_ACCESS_KEY_ID: ${{ secrets.YANDEX_S3_ACCESS_KEY_ID }}
-          YANDEX_S3_SECRET_ACCESS_KEY: ${{ secrets.YANDEX_S3_SECRET_ACCESS_KEY }}
-          YANDEX_S3_BUCKET: ${{ secrets.YANDEX_S3_BUCKET }}
-        run: |
-          # Обрезаем переводы строк и пробелы — иначе Invalid header / SignatureDoesNotMatch
-          AK="$(printf '%s' "$YANDEX_S3_ACCESS_KEY_ID" | tr -d '\n\r' | xargs)"
-          SK="$(printf '%s' "$YANDEX_S3_SECRET_ACCESS_KEY" | tr -d '\n\r' | xargs)"
-          BUCKET="$(printf '%s' "$YANDEX_S3_BUCKET" | tr -d '\n\r' | xargs)"
-          echo "AWS_ACCESS_KEY_ID=$AK" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=$SK" >> $GITHUB_ENV
-          echo "S3_BUCKET=$BUCKET" >> $GITHUB_ENV
-          mkdir -p ~/.aws
-          printf '%s\n' '[default]' 'region = ru-central1' 's3 =' '  addressing_style = path' > ~/.aws/config
-          printf '%s\n' '[default]' "aws_access_key_id = $AK" "aws_secret_access_key = $SK" > ~/.aws/credentials
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Sync to bucket
-        run: |
-          aws s3 sync . "s3://$S3_BUCKET/" \
-            --endpoint-url "https://storage.yandexcloud.net" \
-            --region ru-central1 \
-            --delete \
-            --exclude ".git/*" \
-            --exclude ".env" \
-            --exclude ".venv/*" \
-            --exclude "venv/*" \
-            --exclude "__pycache__/*" \
-            --exclude "*.pyc" \
-            --exclude ".DS_Store" \
-            --exclude ".github/*" \
-            --exclude "*.log"
+      - name: Install boto3
+        run: pip install boto3
+
+      - name: Sync to Yandex Object Storage
+        env:
+          S3_ACCESS_KEY_ID: ${{ secrets.YANDEX_S3_ACCESS_KEY_ID }}
+          S3_SECRET_ACCESS_KEY: ${{ secrets.YANDEX_S3_SECRET_ACCESS_KEY }}
+          S3_BUCKET: ${{ secrets.YANDEX_S3_BUCKET }}
+        run: python scripts/s3_sync_to_yandex.py
