@@ -1,0 +1,47 @@
+# Ежедневная проверка вакансий и рассылка в Telegram
+# Секреты задаются в Settings → Secrets and variables → Actions
+
+name: Daily jobs digest
+
+on:
+  schedule:
+    # Каждый день в 9:00 UTC (12:00 МСК)
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    # Ручной запуск: Actions → Daily jobs digest → Run workflow
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # для push обновлённого seen_jobs.json
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily job check
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          YANDEX_API_KEY: ${{ secrets.YANDEX_API_KEY }}
+          YANDEX_FOLDER_ID: ${{ secrets.YANDEX_FOLDER_ID }}
+          YANDEX_MODEL_URI: ${{ secrets.YANDEX_MODEL_URI }}
+        run: python run_daily.py
+
+      - name: Commit and push seen_jobs.json
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/seen_jobs.json
+          git diff --staged --quiet || (git commit -m "chore: update seen jobs" && git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }})

@@ -50,6 +50,14 @@ def _save_urls(urls: list[str]) -> None:
 
 
 def _load_chat_id() -> int | None:
+    import os
+    # В CI (GitHub Actions) chat_id берём из секрета
+    env_chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if env_chat:
+        try:
+            return int(env_chat)
+        except ValueError:
+            pass
     if not STATE_JSON.exists():
         return None
     try:

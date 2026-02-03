@@ -1,8 +1,8 @@
 .env
+GITHUB_SECRETS.md
 __pycache__/
 *.pyc
 .venv/
 venv/
-data/seen_jobs.json
 data/bot_state.json
 *.log
