@@ -20,13 +20,22 @@ def should_skip(path: str) -> bool:
     return bool(EXCLUDE.search(path.replace("\\", "/")))
 
 
+def _clean(s: str) -> str:
+    """Убрать все пробельные символы по краям и внутри (частая причина SignatureDoesNotMatch)."""
+    if not s:
+        return ""
+    return "".join(s.split())
+
+
 def main():
-    ak = (os.environ.get("S3_ACCESS_KEY_ID") or "").strip()
-    sk = (os.environ.get("S3_SECRET_ACCESS_KEY") or "").strip()
+    # Секреты из GitHub могут содержать \r\n или пробелы — убираем всё лишнее
+    ak = _clean(os.environ.get("S3_ACCESS_KEY_ID") or "")
+    sk = _clean(os.environ.get("S3_SECRET_ACCESS_KEY") or "")
     bucket = (os.environ.get("S3_BUCKET") or "").strip()
     if not ak or not sk or not bucket:
         raise SystemExit("Set S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, S3_BUCKET")
 
+    # Yandex Object Storage: endpoint со слэшем, region ru-central1, path-style, SigV4
     session = boto3.Session(
         aws_access_key_id=ak,
         aws_secret_access_key=sk,
@@ -34,8 +43,11 @@ def main():
     )
     client = session.client(
         "s3",
-        endpoint_url="https://storage.yandexcloud.net",
-        config=Config(s3={"addressing_style": "path"}),
+        endpoint_url="https://storage.yandexcloud.net/",
+        config=Config(
+            signature_version="s3v4",
+            s3={"addressing_style": "path"},
+        ),
     )
 
     root = Path(".").resolve()
