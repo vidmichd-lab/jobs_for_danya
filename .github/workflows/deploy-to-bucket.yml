@@ -1,5 +1,6 @@
 # Деплой содержимого репозитория в бакет Yandex Object Storage
 # Запускается при push в main и вручную. Синхронизация через Python (boto3).
+# Re-run: push to main or Actions → Deploy to bucket → Run workflow
 
 name: Deploy to bucket
 
